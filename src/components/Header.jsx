@@ -8,7 +8,7 @@ export default function Header(){
     <BrowserRouter>
       <Link to='/'>Home</Link>
       <Link to='/about'>About</Link>
-      <Link to='/vans'>Vans</Link>
+      <Link to='/vans'>Van</Link>
       <Routes>
         <Route path="/" element={<App/>}/>
         <Route path="/about" element={<About/>}/>
