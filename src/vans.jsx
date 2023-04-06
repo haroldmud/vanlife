@@ -34,7 +34,7 @@ export default function Vans(){
         <div className="flex gap-3 text-[13px] mt-6 text-gray-600">
           <button className="bg-[#ffead0] w-fit px-4 rounded-sm">simple</button>
           <button className="bg-[#ffead0] w-fit px-4 rounded-sm">Luxury</button>
-          <button className="bg-[#ffead0] w-fit px-4 rounded-sm">Rugg</button>
+          <button className="bg-[#ffead0] w-fit px-4 rounded-sm">Rugged</button>
           <button className="pl-2 underline">clear filters</button>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-6">
