@@ -1,7 +1,12 @@
-
+import Footer from "./components/Footer"
 
 export default function Vans(){
   return(
-    <h1>This is the vans page</h1>
+    <section>
+      <div className="mb-12 px-4">
+      <h2 className="font-bold">Explore our van options</h2>
+      </div>
+      <Footer/>
+    </section>
   )
 }

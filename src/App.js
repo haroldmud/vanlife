@@ -1,3 +1,4 @@
+import Footer from "./components/Footer"
 export default function App() {
   return (
     <section className=" h-[100vh]  mx-auto">
@@ -12,6 +13,7 @@ export default function App() {
           <button className="w-full bg-[#ff8c38] rounded-lg py-2 font-bold text-white">Find your van</button>
         </div>
       </div>
+      <Footer/>
     </section>
   )
 }
