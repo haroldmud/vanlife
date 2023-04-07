@@ -23,7 +23,6 @@ export default function Vans(){
     return ()=>{fetchVans()}
   },[])
   console.log(Vans)
-  
 
   return(
     <section>
@@ -33,7 +32,7 @@ export default function Vans(){
         <h2 className="font-bold text-3xl">Explore our van options</h2>
         <div className="flex gap-3 text-[13px] mt-6 text-gray-600">
           <button className="bg-[#ffead0] w-fit px-4 rounded-sm">simples</button>
-          <button className="bg-[#ffead0] w-fit px-4 rounded-sm">Luxury</button>
+          <button className="bg-[#ffead0] w-fit px-4 rounded-sm">Luxurys</button>
           <button className="bg-[#ffead0] w-fit px-4 rounded-sm">Rugged</button>
           <button className="pl-2 underline">clear filters</button>
         </div>
