@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
+import {BsArrowLeft} from "react-icons/bs"
 
 function VanDetails() {
   const vanId = useParams();
@@ -8,7 +9,7 @@ function VanDetails() {
   return (
     <div className="w-[90%] mx-auto mt-8">
             <div className="mb-2">
-              <p>Go back</p>
+              <div><BsArrowLeft/></div><p> Go back</p>
             </div>
             <img className="object-cover rounded-md " src={item.imageUrl} alt="Van" />
             <div className="mt-8">
