@@ -1,4 +1,5 @@
 import Footer from "./components/Footer"
+import { Link } from "react-router-dom"
 
 export function About(){
   return(
@@ -18,7 +19,7 @@ export function About(){
             <p>Your destination is waiting.</p>
             <p>Your van is ready</p>
           </div>
-          <button className="bg-black text-white text-sm font-bold p-2 rounded-md w-fit">Explore our van</button>
+          <Link to='/vans' className="bg-black text-white text-sm font-bold p-2 rounded-md w-fit">Explore our van</Link>
         </div>
       </div>
       <Footer/>
