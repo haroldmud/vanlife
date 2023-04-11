@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
-import {BsArrowLeft} from "react-icons/bs"
+import {HiArrowLeft} from "react-icons/hi"
+import { Link } from "react-router-dom";
 
 function VanDetails() {
   const vanId = useParams();
@@ -8,9 +9,9 @@ function VanDetails() {
   const item =details[vanId.id.slice(0,-1)]
   return (
     <div className="w-[90%] mx-auto mt-8">
-            <div className="mb-2">
-              <div><BsArrowLeft/></div><p> Go back</p>
-            </div>
+            <Link to='/vans' className="mb-2 flex gap-2">
+              <span className="my-auto text-gray-500"><HiArrowLeft/></span><p className="underline text-sm my-auto"> Go back</p>
+            </Link>
             <img className="object-cover rounded-md " src={item.imageUrl} alt="Van" />
             <div className="mt-8">
               <div className="flex flex-col gap-2 mb-4">
