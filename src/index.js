@@ -4,13 +4,23 @@ import './index.css';
 import Header from './components/Header';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import vanSlice from './features/vanslice';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = configureStore({
+  reducer:{
+    vans:vanSlice
+  }
+})
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <Header />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 

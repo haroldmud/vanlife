@@ -1,11 +1,18 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import Footer from "./components/Footer"
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetching } from "./features/vanslice";
 import './server'
 
 export default function Vans(){
   const [Vans, setVans] = useState([]);
   const [loads, setLoads] = useState(true);
+  const vanLoad = useSelector(prev => prev.vans.value.van)
+  const vanDispatch = useDispatch();
+  vanDispatch(fetching(Vans))
 
   useEffect(()=>{
     const fetchVans = async()=>{
@@ -22,7 +29,6 @@ export default function Vans(){
     fetchVans();
     return ()=>{fetchVans()}
   },[])
-  console.log(Vans)
 
   return(
     <section>
@@ -37,21 +43,20 @@ export default function Vans(){
           <button className="pl-2 underline">clear filters</button>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-6">
-          {Vans?.map((item,idx)=><div key={idx} className="w-[95%] mx-auto">
+          {vanLoad?.map((item,idx)=><Link to={`/vans/${idx}}`} key={idx} className="w-[95%] mx-auto">
             <img className="object-cover rounded-md " src={item.imageUrl} alt="Van" />
             <div className="flex justify-between mt-2">
               <div className="flex flex-col gap-2 ">
                 <p className="font-bold">{item.name}</p>
-                <button className={`bg-[#e17654] text-[#ffead0] font-semibold w-fit px-4 py-1 rounded-sm`}>{item.type}</button>
+                <button className={`${item.type === 'simple' ? 'bg-[#e17654]' :item.type === 'rugged' ? 'bg-[#115e59]' : "bg-black"  } text-[#ffead0] 
+                font-semibold w-fit px-4 py-1 rounded-sm`}>{item.type}</button>
               </div>
               <div>
                 <p className="font-bold">${item.price}</p>
                 <p className="text-[12px] font-semibold text-end">/day</p>
               </div>
             </div>
-          </div>)
-
-          
+          </Link>)
           }
         </div>
       </div>
