@@ -9,7 +9,7 @@ function VanDetails() {
   const item =details[vanId.id.slice(0,-1)]
   return (
     <div className="w-[90%] mx-auto mt-8">
-            <Link to='/vans' className="mb-2 flex gap-2">
+            <Link to='/vans' className="mb-4 flex gap-2">
               <span className="my-auto text-gray-500"><HiArrowLeft/></span><p className="underline text-sm my-auto"> Go back</p>
             </Link>
             <img className="object-cover rounded-md " src={item.imageUrl} alt="Van" />
