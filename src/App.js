@@ -1,4 +1,5 @@
 import Footer from "./components/Footer"
+import { Link } from "react-router-dom"
 export default function App() {
   return (
     <section className=" h-[100vh]  mx-auto">
@@ -10,7 +11,7 @@ export default function App() {
           <p>Add adventure to your life by joining  the #vanlife movement.</p>
           <p>Rent the perfect van to make your perfect road trip</p>
           </div>
-          <button className="w-full bg-[#ff8c38] rounded-lg py-2 font-bold text-white">Find your van</button>
+          <Link to='/vans' className="w-full bg-[#ff8c38] rounded-lg py-2 font-bold text-white text-center">Find your van</Link>
         </div>
       </div>
       <Footer/>
