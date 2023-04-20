@@ -20,7 +20,7 @@ export default function Header() {
         <Route path="/vans" element={<Vans />} />
         <Route path="/vans/:id" element={<VanDetails />} />
         <Route path="/host" element={<Host />}></Route>
-        <Route element={<HostLayout />}>
+        <Route path="/host" element={<HostLayout />}>
           <Route path="/host/dashboard" element={<Dashboard />} />
           <Route path="/host/income" element={<Income />} />
           <Route path="/host/list" element={<List />} />

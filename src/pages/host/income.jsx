@@ -1,5 +1,9 @@
 function Income() {
-  return <div>income page</div>;
+  return (
+    <section>
+      <img className="w-full" src="/capture.PNG" alt="" />
+    </section>
+  );
 }
 
 export default Income;
