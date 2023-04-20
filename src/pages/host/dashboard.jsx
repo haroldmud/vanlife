@@ -29,6 +29,10 @@ export default function Dashboard() {
         </div>
         <button>Details</button>
       </div>
+      <div className="bg-[#fff7ed] px-4 py-8 flex justify-between">
+        <p className="font-bold">Review score</p>
+        <button>Details</button>
+      </div>
     </section>
   );
 }
