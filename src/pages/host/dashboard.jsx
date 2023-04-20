@@ -31,7 +31,7 @@ export default function Dashboard() {
       </div>
       <div className="bg-[#fff7ed] px-4 py-8 flex justify-between">
         <p className="font-bold">Review score</p>
-        <button>Detaisl</button>
+        <button>Detail</button>
       </div>
     </section>
   );
