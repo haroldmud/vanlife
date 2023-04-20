@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 export default function Nav() {
   const location = useLocation();
   return (
-    <div className="flex justify-between p-4">
+    <div className="flex justify-between p-4 bg-[#fff7ed]">
       <Link to="/" className={` font-[900]`}>
         #VANLIFE
       </Link>
@@ -16,8 +16,8 @@ export default function Nav() {
             location.pathname === "/host/income" ||
             location.pathname === "/host/list" ||
             location.pathname === "/host/reviews"
-              ? "underline text-black"
-              : "text-gray-400"
+              ? "underline-offset-2 underline text-black"
+              : "text-[#4d4d4d]"
           }
         >
           Host
@@ -26,8 +26,8 @@ export default function Nav() {
           to="/about"
           className={
             location.pathname === "/about"
-              ? "underline text-black"
-              : "text-gray-400"
+              ? "underline-offset-2 underline text-black"
+              : "text-[#4d4d4d]"
           }
         >
           About
@@ -36,8 +36,8 @@ export default function Nav() {
           to="/vans"
           className={
             location.pathname === "/vans"
-              ? "underline text-black"
-              : "text-gray-400"
+              ? "underline-offset-2 underline text-black"
+              : "text-[#4d4d4d]"
           }
         >
           Vans
