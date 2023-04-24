@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export default function HostVanDetail() {
   const [hostList, setHostList] = useState([]);
   const listId = useParams();
-  const listDetails = hostList[listId.id];
+  const item = hostList[listId.id];
 
   useEffect(() => {
     const detailFetcher = async () => {
@@ -22,5 +22,5 @@ export default function HostVanDetail() {
     };
   }, []);
 
-  return <h1>{listDetails?.name}</h1>;
+  return <h1>{item?.name}</h1>;
 }
