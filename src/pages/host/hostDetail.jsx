@@ -13,7 +13,7 @@ export default function HostVanDetail() {
         const result = await detail.json();
         setHostList(result.vans);
       } catch (e) {
-        setHostList("Nothin found I ain't gon lie");
+        setHostList("Nothing found I ain't gon lie");
       }
     };
     detailFetcher();
