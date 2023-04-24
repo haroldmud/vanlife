@@ -1,47 +1,42 @@
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Nav() {
-  const location = useLocation();
   return (
     <div className="flex justify-between p-4 bg-[#fff7ed]">
-      <Link to="/" className={` font-[900]`}>
+      <NavLink to="/" className={` font-[900]`}>
         #VANLIFE
-      </Link>
+      </NavLink>
       <div className={`text-[12px] font-bold my-auto flex gap-4`}>
-        <Link
-          to="/host/dashboard"
-          className={
-            location.pathname === "/host/dashboard" ||
-            location.pathname === "/host/income" ||
-            location.pathname === "/host/list" ||
-            location.pathname === "/host/reviews"
+        <NavLink
+          to="/host"
+          className={({ isActive }) =>
+            isActive
               ? "underline-offset-2 underline text-black"
               : "text-[#4d4d4d]"
           }
         >
           Host
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/about"
-          className={
-            location.pathname === "/about"
+          className={({ isActive }) =>
+            isActive
               ? "underline-offset-2 underline text-black"
               : "text-[#4d4d4d]"
           }
         >
           About
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/vans"
-          className={
-            location.pathname === "/vans"
+          className={({ isActive }) =>
+            isActive
               ? "underline-offset-2 underline text-black"
               : "text-[#4d4d4d]"
           }
         >
           Vans
-        </Link>
+        </NavLink>
       </div>
     </div>
   );
