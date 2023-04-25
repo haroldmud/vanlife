@@ -1,7 +1,7 @@
 function Income() {
   return (
     <section>
-      <img className="w-full" src="/capture.PNG" alt="" />
+      <img className="w-full" src="/Capture.png" alt="" />
     </section>
   );
 }
