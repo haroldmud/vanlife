@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 export default function HostNav() {
   const location = useLocation();
+  const vanId = useParams();
+
   return (
     <div className="flex gap-4 font-bold bg-[#fff7ed] px-4 py-8 text-[13px]">
       <Link
@@ -27,7 +29,8 @@ export default function HostNav() {
       </Link>
       <Link
         className={`${
-          location.pathname === "/host/list"
+          location.pathname === "/host/list"||
+          location.pathname === `/host/list/${vanId.id}`
             ? "underline-offset-2 underline"
             : "text-[#4d4d4d]"
         }`}

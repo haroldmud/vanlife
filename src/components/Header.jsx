@@ -12,6 +12,10 @@ import Unfound from "../pages/404";
 import Dashboard from "../pages/host/dashboard";
 import Error from './Error';
 import Login from '../pages/authentication';
+import HostVanDetail from '../pages/host/hostDetail/detail';
+import HostDescription from '../pages/host/hostDetail/description';
+import HostPrice from '../pages/host/hostDetail/price';
+import HostPhoto from '../pages/host/hostDetail/photo';
 
 const instanceRouter = createBrowserRouter(createRoutesFromElements(
       <Route path='/' element={<Layout />}>
@@ -24,6 +28,11 @@ const instanceRouter = createBrowserRouter(createRoutesFromElements(
           <Route path="income" element={<Income />} />
           <Route path="list" element={<List />} />
           <Route path="reviews" element={<Review />} />
+          <Route path="list/:id" element={<HostVanDetail />}>
+            <Route index element={<HostDescription />} />
+            <Route path="price" element={<HostPrice />} />
+            <Route path="photo" element={<HostPhoto />} />
+          </Route>
         </Route>
         <Route path='authentication' element={<Login/>}/>
         <Route path="*" element={<Unfound/>}/>
