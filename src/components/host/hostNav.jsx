@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 export default function HostNav() {
   const location = useLocation();
   const vanId = useParams();
-  console.log(vanId);
+
   return (
     <div className="flex gap-4 font-bold bg-[#fff7ed] px-4 py-8 text-[13px]">
       <NavLink

@@ -1,24 +1,17 @@
-import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 export default function HostDescription() {
-  const [hostList, setHostList] = useState([]);
+  const { hostList } = useOutletContext();
   const listId = useParams();
   const item = hostList[listId.id];
-  useEffect(() => {
-    const detailFetcher = async () => {
-      try {
-        const detail = await fetch("/api/vans");
-        const result = await detail.json();
-        setHostList(result.vans);
-      } catch (e) {
-        setHostList("Nothing found I ain't gon lie");
-      }
-    };
-    detailFetcher();
-    return () => {
-      detailFetcher();
-    };
-  }, [listId]);
-  return <h1>{item?.description}</h1>;
+
+  return (
+    <div className="mt-4">
+      <span className="font-bold">Name:</span> {item.name} <br />
+      <span className="font-bold">Category:</span> {item.type} <br />
+      <span className="font-bold">Description:</span> {item.description} <br />
+      <span className="font-bold">Visibility:</span> Public <br />
+    </div>
+  );
 }

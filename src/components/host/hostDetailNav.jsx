@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+
 import { useLocation } from "react-router-dom";
 
 export default function HostDetailNav(props) {
@@ -38,7 +38,6 @@ export default function HostDetailNav(props) {
           Photo
         </Link>
       </div>
-      <Outlet />
     </div>
   );
 }

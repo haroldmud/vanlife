@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { HiArrowLeft } from "react-icons/hi";
 import HostDetailNav from "../../../components/host/hostDetailNav";
 
@@ -70,6 +71,7 @@ export default function HostVanDetail() {
           </div>
         </div>
         <HostDetailNav id={listId.id} />
+        <Outlet context={{ hostList }} />
       </div>
     </div>
   );
