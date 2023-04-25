@@ -8,6 +8,7 @@ export default function HostVanDetail() {
   const [hostList, setHostList] = useState([]);
   const listId = useParams();
   const item = hostList[listId.id];
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const detailFetcher = async () => {
@@ -15,8 +16,10 @@ export default function HostVanDetail() {
         const detail = await fetch("/api/vans");
         const result = await detail.json();
         setHostList(result.vans);
+        setLoading(false);
       } catch (e) {
         setHostList("Nothing found I ain't gon lie");
+        setLoading(false);
       }
     };
     detailFetcher();
@@ -25,7 +28,9 @@ export default function HostVanDetail() {
     };
   }, [listId]);
 
-  return (
+  return loading ? (
+    <div className="text-center py-32">loading...</div>
+  ) : (
     <div className=" bg-[#fff7ed] h-full border border-[transparent]">
       <Link to="/host/list" className="mb-4 flex gap-1 w-10/12 mx-auto">
         <span className="my-auto text-gray-500 text-sm">

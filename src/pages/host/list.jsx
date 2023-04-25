@@ -4,14 +4,17 @@ import "../../server";
 
 function List() {
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fecthList = async () => {
       try {
         const res = await fetch("/api/vans");
         const listData = await res.json();
         setList(listData.vans);
+        setLoading(false);
       } catch (err) {
         setList("This is an error");
+        setLoading(false);
       }
     };
     fecthList();
@@ -19,7 +22,9 @@ function List() {
       fecthList();
     };
   }, []);
-  return (
+  return loading ? (
+    <div className="text-center py-52">Loading...</div>
+  ) : (
     <div className="bg-[#fff7ed] px-4 py-8 ">
       <h2 className="font-bold text-4xl">Your listed vans</h2>
       <div className="py-12 flex flex-col gap-4">
