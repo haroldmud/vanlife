@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetching } from "../features/vanslice";
@@ -13,6 +13,13 @@ export default function Vans() {
   const vanLoad = useSelector((prev) => prev.vans.value.van);
   const vanDispatch = useDispatch();
   vanDispatch(fetching(Vans));
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchFilter = searchParams.get("type");
+  console.log(searchFilter);
+
+  const vanFilter = searchFilter
+    ? vanLoad.filter((char) => char.type.toLowerCase() === searchFilter)
+    : vanLoad;
 
   useEffect(() => {
     const fetchVans = async () => {
@@ -42,19 +49,33 @@ export default function Vans() {
         <div className="mb-12 px-4">
           <h2 className="font-bold text-3xl">Explore our van options</h2>
           <div className="flex gap-3 text-[13px] mt-6 text-gray-600">
-            <button className="bg-[#ffead0] w-fit px-4 rounded-sm">
-              simple
-            </button>
-            <button className="bg-[#ffead0] w-fit px-4 rounded-sm">
+            <Link
+              to="?type=simple"
+              className="bg-[#ffead0] w-fit px-4 rounded-sm"
+            >
+              Simple
+            </Link>
+            <Link
+              to="?type=luxury"
+              className="bg-[#ffead0] w-fit px-4 rounded-sm"
+            >
               Luxury
-            </button>
-            <button className="bg-[#ffead0] w-fit px-4 rounded-sm">
+            </Link>
+            <button
+              onClick={() => setSearchParams("?type=rugged")}
+              className="bg-[#ffead0] w-fit px-4 rounded-sm"
+            >
               Rugged
             </button>
-            <button className="pl-2 underline">clear filters</button>
+            <button
+              onClick={() => setSearchParams({})}
+              className="pl-2 underline"
+            >
+              clear filters
+            </button>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-6">
-            {vanLoad?.map((item, idx) => (
+            {vanFilter?.map((item, idx) => (
               <Link to={`/vans/${idx}}`} key={idx} className="w-[95%] mx-auto">
                 <img
                   className="object-cover rounded-md "
