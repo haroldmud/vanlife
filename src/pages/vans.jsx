@@ -17,8 +17,6 @@ export default function Vans() {
   vanDispatch(fetching(Vans));
   const [searchParams, setSearchParams] = useSearchParams();
   const searchFilter = searchParams.get("type");
-  console.log(searchFilter)
-
   const vanFilter = searchFilter
     ? vanLoad.filter((char) => char.type.toLowerCase() === searchFilter)
     : vanLoad;
