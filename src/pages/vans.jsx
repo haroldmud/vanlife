@@ -10,7 +10,6 @@ import "../server";
 
 export default function Vans() {
   const location = useLocation();
-  console.log(location)
   const [Vans, setVans] = useState([]);
   const [loads, setLoads] = useState(true);
   const vanLoad = useSelector((prev) => prev.vans.value.van);
