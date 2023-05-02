@@ -17,6 +17,7 @@ export default function Vans() {
   vanDispatch(fetching(Vans));
   const [searchParams, setSearchParams] = useSearchParams();
   const searchFilter = searchParams.get("type");
+  console.log(searchFilter)
 
   const vanFilter = searchFilter
     ? vanLoad.filter((char) => char.type.toLowerCase() === searchFilter)
@@ -61,12 +62,12 @@ export default function Vans() {
             >
               Luxury
             </Link>
-            <Link
-              to="?type=rugged"
-              className={`${location.search === "?type=rugged" ? "bg-[#115e59] text-white" : 'bg-[#ffead0]'} w-fit px-4 rounded-sm`}
+            <button
+              onClick={()=> setSearchParams("?type=rugged")}
+              className={`${searchFilter === "rugged" ? "bg-[#115e59] text-white" : 'bg-[#ffead0]'} w-fit px-4 rounded-sm`}
             >
               Rugged
-            </Link>
+            </button>
             <button
               onClick={() => setSearchParams({})}
               className="pl-2 underline"
