@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetching } from "../features/vanslice";
+import { getVans } from "../api";
 import { useLocation, Link, useSearchParams } from "react-router-dom";
 import "../server";
 
@@ -22,9 +23,8 @@ export default function Vans() {
   useEffect(() => {
     const fetchVans = async () => {
       try {
-        const response = await fetch("/api/vans");
-        const vanData = await response.json();
-        setVans(vanData.vans);
+        const vanData = await getVans();
+        setVans(vanData);
         setLoads(false);
       } catch (error) {
         setLoads(false);
