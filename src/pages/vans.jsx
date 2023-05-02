@@ -5,9 +5,12 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetching } from "../features/vanslice";
+import { useLocation } from "react-router-dom";
 import "../server";
 
 export default function Vans() {
+  const location = useLocation();
+  console.log(location)
   const [Vans, setVans] = useState([]);
   const [loads, setLoads] = useState(true);
   const vanLoad = useSelector((prev) => prev.vans.value.van);
@@ -15,7 +18,6 @@ export default function Vans() {
   vanDispatch(fetching(Vans));
   const [searchParams, setSearchParams] = useSearchParams();
   const searchFilter = searchParams.get("type");
-  console.log(searchFilter);
 
   const vanFilter = searchFilter
     ? vanLoad.filter((char) => char.type.toLowerCase() === searchFilter)
@@ -29,7 +31,6 @@ export default function Vans() {
         setVans(vanData.vans);
         setLoads(false);
       } catch (error) {
-        console.error(error);
         setLoads(false);
       }
     };
@@ -51,22 +52,22 @@ export default function Vans() {
           <div className="flex gap-3 text-[13px] mt-6 text-gray-600">
             <Link
               to="?type=simple"
-              className="bg-[#ffead0] w-fit px-4 rounded-sm"
+              className={`${location.search === "?type=simple" ? "bg-[#e17654] text-white" : 'bg-[#ffead0]'}  w-fit px-4 rounded-sm`}
             >
               Simple
             </Link>
             <Link
               to="?type=luxury"
-              className="bg-[#ffead0] w-fit px-4 rounded-sm"
+              className={`${location.search === "?type=luxury" ? "bg-black text-white" : 'bg-[#ffead0]'} w-fit px-4 rounded-sm`}
             >
               Luxury
             </Link>
-            <button
-              onClick={() => setSearchParams("?type=rugged")}
-              className="bg-[#ffead0] w-fit px-4 rounded-sm"
+            <Link
+              to="?type=rugged"
+              className={`${location.search === "?type=rugged" ? "bg-[#115e59] text-white" : 'bg-[#ffead0]'} w-fit px-4 rounded-sm`}
             >
               Rugged
-            </button>
+            </Link>
             <button
               onClick={() => setSearchParams({})}
               className="pl-2 underline"
