@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Route,createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
 import App from "../App";
 import { About } from "../pages/about";
 import Vans from "../pages/vans";
@@ -12,13 +12,11 @@ import HostLayout from "./hostLayout";
 import Unfound from "../pages/404";
 import Dashboard from "../pages/host/dashboard";
 
-export default function Header() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<App />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/vans" element={<Vans />} />
+const instanceRouter = createBrowserRouter(createRoutesFromElements(
+      <Route path='/' element={<Layout />}>
+        <Route index element={<App />} />
+        <Route path="about" element={<About />} />
+        <Route path="vans" element={<Vans />} />
         <Route path="/vans/:id" element={<VanDetails />} />
         <Route path="/host" element={<Host />}></Route>
         <Route path="/host" element={<HostLayout />}>
@@ -29,6 +27,10 @@ export default function Header() {
         </Route>
         <Route path="*" element={<Unfound/>}/>
       </Route>
-    </Routes>
+))
+
+export default function Header() {
+  return (
+    <RouterProvider router={instanceRouter}/>
   );
 }
