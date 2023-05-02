@@ -9,6 +9,7 @@ import Income from "../pages/host/income";
 import List from "../pages/host/list";
 import Review from "../pages/host/reviews";
 import HostLayout from "./hostLayout";
+import Unfound from "../pages/404";
 import Dashboard from "../pages/host/dashboard";
 
 export default function Header() {
@@ -26,6 +27,7 @@ export default function Header() {
           <Route path="/host/list" element={<List />} />
           <Route path="/host/reviews" element={<Review />} />
         </Route>
+        <Route path="*" element={<Unfound/>}/>
       </Route>
     </Routes>
   );

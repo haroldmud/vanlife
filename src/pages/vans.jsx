@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import Footer from "../components/Footer";
-import { Link, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetching } from "../features/vanslice";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link, useSearchParams } from "react-router-dom";
 import "../server";
 
 export default function Vans() {
@@ -75,7 +73,9 @@ export default function Vans() {
           </div>
           <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-6">
             {vanFilter?.map((item, idx) => (
-              <Link to={`/vans/${idx}}`} key={idx} className="w-[95%] mx-auto">
+              <Link to={`/vans/${idx}}`} key={idx} className="w-[95%] mx-auto"
+                  state={{search: searchParams.toString()}}
+                >
                 <img
                   className="object-cover rounded-md "
                   src={item.imageUrl}
@@ -111,7 +111,6 @@ export default function Vans() {
           <p className="mx-auto  w-fit">NO DATA AVAILABLE</p>
         </div>
       )}
-      <Footer />
     </section>
   );
 }

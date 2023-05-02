@@ -1,14 +1,16 @@
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link,useParams, useLocation } from "react-router-dom";
 
 function VanDetails() {
   const vanId = useParams();
+  const location = useLocation();
+  console.log(location)
   const details = useSelector((prev) => prev.vans.value.van);
   const item = details[vanId.id.slice(0, -1)];
   return (
     <div className="w-[90%] mx-auto mt-8">
-      <Link to="/vans " className="mb-4 flex gap-1">
+      <Link to={`${location.state ? `/vans/?${location.state.search}` : "/vans"}`}
+       className="mb-4 flex gap-1">
         <span className="my-auto text-gray-500">&larr;</span>
         <p className="underline text-sm my-auto"> Go back</p>
       </Link>

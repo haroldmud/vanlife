@@ -1,7 +1,7 @@
 function Review() {
   return (
     <section>
-      <img className="w-full" src="/capture2.PNG" alt="" />
+      <img className="w-full" src="/Capture2.png" alt="" />
     </section>
   );
 }
