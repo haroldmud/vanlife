@@ -12,7 +12,7 @@ export default function Nav() {
         <Link
           to="/host/dashboard"
           className={
-            location.pathname === "/host/dashboard" ||
+            location.pathname === "/host" ||
             location.pathname === "/host/income" ||
             location.pathname === "/host/list" ||
             location.pathname === "/host/reviews"

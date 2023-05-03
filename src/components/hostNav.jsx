@@ -7,11 +7,11 @@ export default function HostNav() {
     <div className="flex gap-4 font-bold bg-[#fff7ed] px-4 py-8 text-[13px]">
       <Link
         className={`${
-          location.pathname === "/host/dashboard"
+          location.pathname === "/host"
             ? "underline-offset-2 underline"
             : "text-[#4d4d4d]"
         }`}
-        to="/host/dashboard"
+        to="/host"
       >
         Dashboard
       </Link>
