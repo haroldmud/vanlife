@@ -1,4 +1,3 @@
-import Footer from "./components/Footer"
 import { Link } from "react-router-dom"
 export default function App() {
   return (
@@ -14,7 +13,6 @@ export default function App() {
           <Link to='/vans' className="w-full bg-[#ff8c38] rounded-lg py-2 font-bold text-white text-center">Find your van</Link>
         </div>
       </div>
-      <Footer/>
     </section>
   )
 }

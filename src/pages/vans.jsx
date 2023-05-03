@@ -1,36 +1,27 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import Footer from "../components/Footer";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetching } from "../features/vanslice";
+import { useLocation, Link, useSearchParams } from "react-router-dom";
 import "../server";
+import { getVans } from "../api";
+import { useLoaderData } from "react-router-dom";
+
+export function loader(){
+  return getVans()
+}
 
 export default function Vans() {
-  const [Vans, setVans] = useState([]);
-  const [loads, setLoads] = useState(true);
+  const Vans = useLoaderData();
+  const location = useLocation();
+  const loads=false;
   const vanLoad = useSelector((prev) => prev.vans.value.van);
   const vanDispatch = useDispatch();
   vanDispatch(fetching(Vans));
-
-  useEffect(() => {
-    const fetchVans = async () => {
-      try {
-        const response = await fetch("/api/vans");
-        const vanData = await response.json();
-        setVans(vanData.vans);
-        setLoads(false);
-      } catch (error) {
-        console.error(error);
-        setLoads(false);
-      }
-    };
-    fetchVans();
-    return () => {
-      fetchVans();
-    };
-  }, []);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchFilter = searchParams.get("type");
+  const vanFilter = searchFilter
+    ? vanLoad.filter((char) => char.type.toLowerCase() === searchFilter)
+    : vanLoad;
 
   return (
     <section>
@@ -42,20 +33,36 @@ export default function Vans() {
         <div className="mb-12 px-4">
           <h2 className="font-bold text-3xl">Explore our van options</h2>
           <div className="flex gap-3 text-[13px] mt-6 text-gray-600">
-            <button className="bg-[#ffead0] w-fit px-4 rounded-sm">
-              simple
-            </button>
-            <button className="bg-[#ffead0] w-fit px-4 rounded-sm">
+            <Link
+              to="?type=simple"
+              className={`${location.search === "?type=simple" ? "bg-[#e17654] text-white" : 'bg-[#ffead0]'}  w-fit px-4 rounded-sm`}
+            >
+              Simple
+            </Link>
+            <Link
+              to="?type=luxury"
+              className={`${location.search === "?type=luxury" ? "bg-black text-white" : 'bg-[#ffead0]'} w-fit px-4 rounded-sm`}
+            >
               Luxury
-            </button>
-            <button className="bg-[#ffead0] w-fit px-4 rounded-sm">
+            </Link>
+            <button
+              onClick={()=> setSearchParams("?type=rugged")}
+              className={`${searchFilter === "rugged" ? "bg-[#115e59] text-white" : 'bg-[#ffead0]'} w-fit px-4 rounded-sm`}
+            >
               Rugged
             </button>
-            <button className="pl-2 underline">clear filters</button>
+            <button
+              onClick={() => setSearchParams({})}
+              className="pl-2 underline"
+            >
+              clear filters
+            </button>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-6">
-            {vanLoad?.map((item, idx) => (
-              <Link to={`/vans/${idx}}`} key={idx} className="w-[95%] mx-auto">
+            {vanFilter?.map((item, idx) => (
+              <Link to={`/vans/${idx}}`} key={idx} className="w-[95%] mx-auto"
+                  state={{search: searchParams.toString()}}
+                >
                 <img
                   className="object-cover rounded-md "
                   src={item.imageUrl}
@@ -91,7 +98,6 @@ export default function Vans() {
           <p className="mx-auto  w-fit">NO DATA AVAILABLE</p>
         </div>
       )}
-      <Footer />
     </section>
   );
 }
