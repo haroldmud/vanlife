@@ -4,7 +4,6 @@ import { About } from "../pages/about";
 import Vans, {loader as vansLoader} from "../pages/vans";
 import VanDetails from "../pages/vanDetails";
 import Layout from "./layout";
-// import Host from "../pages/host/dashboard";
 import Income from "../pages/host/income";
 import List from "../pages/host/list";
 import Review from "../pages/host/reviews";
