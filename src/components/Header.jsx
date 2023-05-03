@@ -19,7 +19,6 @@ const instanceRouter = createBrowserRouter(createRoutesFromElements(
         <Route path="about" element={<About />} />
         <Route path="vans" loader={vansLoader} errorElement={<Error/>} element={<Vans />} />
         <Route path="vans/:id" element={<VanDetails />} />
-        {/* <Route element={<Host />}></Route> */}
         <Route path="host"  element={<HostLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="income" element={<Income />} />
