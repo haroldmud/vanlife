@@ -10,7 +10,7 @@ export default function Nav() {
       </Link>
       <div className={`text-[12px] font-bold my-auto flex gap-4`}>
         <Link
-          to="/host/dashboard"
+          to="/host"
           className={
             location.pathname === "/host/dashboard" ||
             location.pathname === "/host/income" ||
