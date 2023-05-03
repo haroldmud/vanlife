@@ -11,12 +11,13 @@ import Review from "../pages/host/reviews";
 import HostLayout from "./hostLayout";
 import Unfound from "../pages/404";
 import Dashboard from "../pages/host/dashboard";
+import Error from './Error';
 
 const instanceRouter = createBrowserRouter(createRoutesFromElements(
       <Route path='/' element={<Layout />}>
         <Route index element={<App />} />
         <Route path="about" element={<About />} />
-        <Route path="vans" loader={vansLoader} element={<Vans />} />
+        <Route path="vans" loader={vansLoader} errorElement={<Error/>} element={<Vans />} />
         <Route path="/vans/:id" element={<VanDetails />} />
         <Route path="/host" element={<Host />}></Route>
         <Route path="/host" element={<HostLayout />}>
