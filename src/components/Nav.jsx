@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import {IoMdContact} from "react-icons/io"
 
 export default function Nav() {
   const location = useLocation();
@@ -10,14 +11,14 @@ export default function Nav() {
       </Link>
       <div className={`text-[12px] font-bold my-auto flex gap-4`}>
         <Link
-          to="/host/dashboard"
+          to="/host"
           className={
-            location.pathname === "/host" ||
+            `${location.pathname === "/host" ||
             location.pathname === "/host/income" ||
             location.pathname === "/host/list" ||
             location.pathname === "/host/reviews"
               ? "underline-offset-2 underline text-black"
-              : "text-[#4d4d4d]"
+              : "text-[#4d4d4d]"} my-auto`
           }
         >
           Host
@@ -25,9 +26,9 @@ export default function Nav() {
         <Link
           to="/about"
           className={
-            location.pathname === "/about"
+            `${location.pathname === "/about"
               ? "underline-offset-2 underline text-black"
-              : "text-[#4d4d4d]"
+              : "text-[#4d4d4d]" } my-auto`
           }
         >
           About
@@ -35,12 +36,22 @@ export default function Nav() {
         <Link
           to="/vans"
           className={
-            location.pathname === "/vans"
+            `${location.pathname === "/vans"
               ? "underline-offset-2 underline text-black"
-              : "text-[#4d4d4d]"
+              : "text-[#4d4d4d]"} my-auto`
           }
         >
           Vans
+        </Link>
+        <Link
+          to="/authentication"
+          className={`
+            ${location.pathname === "/authentication"
+              ? "underline-offset-2 underline text-black"
+              : "text-[#4d4d4d]"} text-3xl` 
+          }
+        >
+          <IoMdContact/>
         </Link>
       </div>
     </div>

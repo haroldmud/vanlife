@@ -11,6 +11,7 @@ import HostLayout from "./hostLayout";
 import Unfound from "../pages/404";
 import Dashboard from "../pages/host/dashboard";
 import Error from './Error';
+import Login from '../pages/authentication';
 
 const instanceRouter = createBrowserRouter(createRoutesFromElements(
       <Route path='/' element={<Layout />}>
@@ -24,6 +25,7 @@ const instanceRouter = createBrowserRouter(createRoutesFromElements(
           <Route path="list" element={<List />} />
           <Route path="reviews" element={<Review />} />
         </Route>
+        <Route path='authentication' element={<Login/>}/>
         <Route path="*" element={<Unfound/>}/>
       </Route>
 ))
