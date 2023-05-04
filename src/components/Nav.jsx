@@ -6,7 +6,7 @@ export default function Nav() {
   const location = useLocation();
   return (
     <div className="flex justify-between p-4 bg-[#fff7ed]">
-      <Link to="/" className={` font-[900]`}>
+      <Link to="/" className={`my-auto font-[1000]`}>
         #VANLIFE
       </Link>
       <div className={`text-[12px] font-bold my-auto flex gap-4`}>
