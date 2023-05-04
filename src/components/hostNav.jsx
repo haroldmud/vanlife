@@ -30,7 +30,7 @@ export default function HostNav() {
       <Link
         className={`${
           location.pathname === "/host/list"||
-          location.pathname === `/host/list/${vanId.id}`
+          location.pathname === `/host/list/${vanId.id}` ||location.pathname === `/host/list/${vanId.id}/price` || location.pathname === `/host/list/${vanId.id}/photo`
             ? "underline-offset-2 underline"
             : "text-[#4d4d4d]"
         }`}
