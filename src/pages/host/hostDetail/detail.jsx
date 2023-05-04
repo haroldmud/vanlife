@@ -1,33 +1,20 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { Link, useParams, Outlet, useLoaderData } from "react-router-dom";
 import { HiArrowLeft } from "react-icons/hi";
 import HostDetailNav from "../../../components/host/hostDetailNav";
+import { getVans } from "../../../api";
+
+export function loader(){
+  return getVans();
+}
 
 export default function HostVanDetail() {
-  const [hostList, setHostList] = useState([]);
+  const hostList=useLoaderData();
+  console.log(hostList)
   const listId = useParams();
-  const item = hostList[listId.id];
-  const [loading, setLoading] = useState(true);
+  const item = hostList[1];
+  const loading = false;
 
-  useEffect(() => {
-    const detailFetcher = async () => {
-      try {
-        const detail = await fetch("/api/vans");
-        const result = await detail.json();
-        setHostList(result.vans);
-        setLoading(false);
-      } catch (e) {
-        setHostList("Nothing found I ain't gon lie");
-        setLoading(false);
-      }
-    };
-    detailFetcher();
-    return () => {
-      detailFetcher();
-    };
-  }, [listId]);
+
 
   return loading ? (
     <div className="text-center py-32">loading...</div>

@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import { getVans } from "../../api";
 import "../../server";
 
+
+export function loader(){
+  return getVans()
+}
+
 function List() {
-  const [list, setList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fecthList = async () => {
-      try {
-        const res = await fetch("/api/vans");
-        const listData = await res.json();
-        setList(listData.vans);
-        setLoading(false);
-      } catch (err) {
-        setList("This is an error");
-        setLoading(false);
-      }
-    };
-    fecthList();
-    return () => {
-      fecthList();
-    };
-  }, []);
+  const list = useLoaderData();
+  const loading = false;
+  
   return loading ? (
     <div className="text-center py-52">Loading...</div>
   ) : (

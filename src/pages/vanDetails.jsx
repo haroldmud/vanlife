@@ -1,11 +1,15 @@
-import { useSelector } from "react-redux";
-import { Link,useParams, useLocation } from "react-router-dom";
+import { Link,useParams, useLocation, useLoaderData } from "react-router-dom";
+import { getVans } from "../api";
+
+
+export function loader(){
+  return getVans();
+}
 
 function VanDetails() {
   const vanId = useParams();
   const location = useLocation();
-  console.log(location)
-  const details = useSelector((prev) => prev.vans.value.van);
+  const details = useLoaderData();
   const item = details[vanId.id.slice(0, -1)];
   return (
     <div className="w-[90%] mx-auto mt-8">

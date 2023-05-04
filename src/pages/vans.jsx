@@ -6,6 +6,7 @@ import "../server";
 import { getVans } from "../api";
 import { useLoaderData } from "react-router-dom";
 
+
 export function loader(){
   return getVans()
 }
