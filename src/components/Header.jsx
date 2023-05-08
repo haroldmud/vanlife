@@ -22,19 +22,21 @@ const instanceRouter = createBrowserRouter(createRoutesFromElements(
       <Route path='/' element={<Layout />}>
         <Route index element={<App />} />
         <Route path="about" element={<About />} />
-        <Route element={<Auth/>}>
-          <Route path="vans" loader={vansLoader} errorElement={<Error/>} element={<Vans />} />
-        </Route>
+        <Route path="vans" loader={vansLoader} errorElement={<Error/>} element={<Vans />} />
         <Route path="vans/:id" loader={vanDetailsLoad} element={<VanDetails />} />
         <Route path="host" element={<HostLayout />}>
+        <Route element={<Auth/>}>
           <Route index element={<Dashboard />} />
           <Route path="income" element={<Income />} />
-          <Route path="list" loader={listLoader} element={<List />} />
           <Route path="reviews" element={<Review />} />
+        </Route>
+          <Route path="list" loader={listLoader} element={<List />} />
+          <Route element={<Auth/>}>
           <Route path="list/:id" loader={hostDetailLoad} element={<HostVanDetail />}>
             <Route index element={<HostDescription />} />
             <Route path="price" element={<HostPrice />} />
             <Route path="photo" element={<HostPhoto />} />
+          </Route>
           </Route>
         </Route>
         <Route path='authentication' element={<Login/>}/>
