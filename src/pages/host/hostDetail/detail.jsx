@@ -9,12 +9,9 @@ export function loader(){
 
 export default function HostVanDetail() {
   const hostList=useLoaderData();
-  console.log(hostList)
   const listId = useParams();
   const item = hostList[1];
   const loading = false;
-
-
 
   return loading ? (
     <div className="text-center py-32">loading...</div>

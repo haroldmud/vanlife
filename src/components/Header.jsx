@@ -12,6 +12,7 @@ import Unfound from "../pages/404";
 import Dashboard from "../pages/host/dashboard";
 import Error from './Error';
 import Login from '../pages/authentication';
+import {loader as loginLoad} from './auth'
 import HostVanDetail, {loader as hostDetailLoad} from '../pages/host/hostDetail/detail';
 import HostDescription from '../pages/host/hostDetail/description';
 import HostPrice from '../pages/host/hostDetail/price';
@@ -39,7 +40,7 @@ const instanceRouter = createBrowserRouter(createRoutesFromElements(
           </Route>
           </Route>
         </Route>
-        <Route path='authentication' element={<Login/>}/>
+        <Route path='authentication' loader={loginLoad} element={<Login/>}/>
         <Route path="*" element={<Unfound/>}/>
       </Route>
 ))
