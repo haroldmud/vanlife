@@ -16,12 +16,15 @@ import HostVanDetail, {loader as hostDetailLoad} from '../pages/host/hostDetail/
 import HostDescription from '../pages/host/hostDetail/description';
 import HostPrice from '../pages/host/hostDetail/price';
 import HostPhoto from '../pages/host/hostDetail/photo';
+import Auth from './auth';
 
 const instanceRouter = createBrowserRouter(createRoutesFromElements(
       <Route path='/' element={<Layout />}>
         <Route index element={<App />} />
         <Route path="about" element={<About />} />
-        <Route path="vans" loader={vansLoader} errorElement={<Error/>} element={<Vans />} />
+        <Route element={<Auth/>}>
+          <Route path="vans" loader={vansLoader} errorElement={<Error/>} element={<Vans />} />
+        </Route>
         <Route path="vans/:id" loader={vanDetailsLoad} element={<VanDetails />} />
         <Route path="host" element={<HostLayout />}>
           <Route index element={<Dashboard />} />
