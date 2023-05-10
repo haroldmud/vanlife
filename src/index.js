@@ -6,11 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import vanSlice from './features/vanslice';
+import loginSlice from './features/loginSlice';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = configureStore({
   reducer:{
-    vans:vanSlice
+    vans:vanSlice,
+    login: loginSlice
   }
 })
 root.render(

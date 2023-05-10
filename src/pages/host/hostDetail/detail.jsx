@@ -2,15 +2,17 @@ import { Link, useParams, Outlet, useLoaderData } from "react-router-dom";
 import { HiArrowLeft } from "react-icons/hi";
 import HostDetailNav from "../../../components/host/hostDetailNav";
 import { getVans } from "../../../api";
+import { loader as loadLogOut }  from "../../authentication";
 
-export function loader(){
-  return getVans();
+export async function loader({ request }) {
+  return { vans: await getVans(), prevPath: loadLogOut({ request }) };
 }
 
 export default function HostVanDetail() {
   const hostList=useLoaderData();
   const listId = useParams();
-  const item = hostList[1];
+  const item = hostList.vans[listId.id];
+  console.log(hostList)
   const loading = false;
 
   return loading ? (

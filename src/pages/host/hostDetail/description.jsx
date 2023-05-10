@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export default function HostDescription() {
   const { hostList } = useOutletContext();
   const listId = useParams();
-  const item = hostList[listId.id];
+  const item = hostList.vans[listId.id];
 
   return (
     <div className="mt-4">

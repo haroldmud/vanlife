@@ -1,36 +1,50 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../features/loginSlice";
+import { useLocation, Navigate } from "react-router-dom";
 import { loginUser } from "../api";
+
+export function loader({ request }) {
+  const url = new URL(request.url);
+  localStorage.setItem("url", url.pathname);
+  return url.pathname;
+}
 
 export default function Login() {
   const location = useLocation();
-  const logging = useLoaderData();
+  const logging = useSelector((prev) => prev.login.value);
+  const logDispatch = useDispatch();
   const [isShown, setIsShown] = useState(true);
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [error, setError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const previousPath =localStorage.getItem("url");
 
   function handleSubmit(event) {
     event.preventDefault();
     async function holdLogin() {
       try {
         await loginUser({ email: email, password: pass });
+        logDispatch(login(true));
       } catch (err) {
         setError(true);
       }
     }
     holdLogin();
   }
-  useEffect(()=>{
-    const handleError=setTimeout(()=>{
-      if(Error && submitted){
+
+  useEffect(() => {
+    const handleError = setTimeout(() => {
+      if (Error && submitted) {
         setError(false);
-        setSubmitted(false)
+        setSubmitted(false);
       }
-    }, 3000)
-    return()=>{clearTimeout(handleError)}
-  },[submitted])
+    }, 3000);
+    return () => {
+      clearTimeout(handleError);
+    };
+  }, [submitted]);
 
   function handleEmail(event) {
     setEmail(event.target.value);
@@ -40,25 +54,31 @@ export default function Login() {
     setPass(event.target.value);
   }
 
-  useEffect(()=>{
-    const handleError=setTimeout(()=>{
-      if(Error && submitted){
+  useEffect(() => {
+    const handleError = setTimeout(() => {
+      if (Error && submitted) {
         setError(false);
-        setSubmitted(false)
+        setSubmitted(false);
       }
-    }, 3000)
-    return()=>{clearTimeout(handleError)}
-  },[submitted])
+    }, 3000);
+    return () => {
+      clearTimeout(handleError);
+    };
+  }, [submitted]);
 
-  useEffect(()=>{
-    const holdIsShown =setTimeout(()=>{
-      setIsShown(state => !state);
-    }, 3000)
+  useEffect(() => {
+    const holdIsShown = setTimeout(() => {
+      setIsShown((state) => !state);
+    }, 3000);
 
-    return()=> {clearTimeout(holdIsShown)}
-  },[])
+    return () => {
+      clearTimeout(holdIsShown);
+    };
+  }, []);
 
-  return (
+  return logging ? (
+    <Navigate to={previousPath} />
+  ) : (
     <div className="mt-12">
       <h1 className="text-center font-bold text-2xl">
         Sign in to your account
@@ -92,7 +112,7 @@ export default function Login() {
           type="password"
         />
         <button className="py-2 text-white font-bold bg-[#FF8C38] mt-8">
-          Sign in
+          {submitted && !error ? "Signing in..." : "Sign in"}
         </button>
       </form>
       <p
