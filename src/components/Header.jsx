@@ -19,7 +19,7 @@ import HostPhoto from '../pages/host/hostDetail/photo';
 import Auth from './auth';
 
 const instanceRouter = createBrowserRouter(createRoutesFromElements(
-      <Route path='/' element={<Layout />}>
+      <Route path='/' element={<Layout />}>f
         <Route  loader={previousPath} index element={<App />} />
         <Route loader={previousPath} path="about" element={<About />} />
         <Route  path="vans" loader={vansLoader} errorElement={<Error/>} element={<Vans />} />
