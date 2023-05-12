@@ -4,7 +4,6 @@ import { Link,useParams, useLocation } from "react-router-dom";
 function VanDetails() {
   const vanId = useParams();
   const location = useLocation();
-  console.log(location)
   const details = useSelector((prev) => prev.vans.value.van);
   const item = details[vanId.id.slice(0, -1)];
   return (
