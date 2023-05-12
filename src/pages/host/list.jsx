@@ -28,9 +28,9 @@ function List() {
     <div className="bg-[#fff7ed] px-4 py-8 ">
       <h2 className="font-bold text-4xl">Your listed vans</h2>
       <div className="py-12 flex flex-col gap-4">
-        {list.map((item, idx) => (
+        {list.map((item) => (
           <Link
-            to={`/host/list/${idx}`}
+            to={`/host/list/${item.id}`}
             key={item.id}
             className="bg-white flex gap-4 rounded-xl p-4"
           >

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 export default function HostDetailNav(props) {
-  const loc = useLocation();
+  const location = useLocation();
   return (
     <div>
       <div className="flex gap-4 text-sm font-bold mt-2">
         <Link
           className={`${
-            loc.pathname === `/host/list/${props.id}`
+            location.pathname === `/host/list/${props.id}`
               ? "underline underline-offset-2"
               : "text-[#4d4d4d]"
           }`}
@@ -19,7 +19,7 @@ export default function HostDetailNav(props) {
         </Link>
         <Link
           className={`${
-            loc.pathname === `/host/list/${props.id}/price`
+            location.pathname === `/host/list/${props.id}/price`
               ? "underline underline-offset-2"
               : "text-[#4d4d4d]"
           }`}
@@ -29,7 +29,7 @@ export default function HostDetailNav(props) {
         </Link>
         <Link
           className={`${
-            loc.pathname === `/host/list/${props.id}/photo`
+            location.pathname === `/host/list/${props.id}/photo`
               ? "underline underline-offset-2"
               : "text-[#4d4d4d]"
           }`}

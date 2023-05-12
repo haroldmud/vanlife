@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; 
 import App from "../App";
 import { About } from "../pages/about";
 import Vans from "../pages/vans";
@@ -22,7 +22,7 @@ export default function Header() {
         <Route path="about" element={<About />} />
         <Route path="vans" element={<Vans />} />
         <Route path="vans/:id" element={<VanDetails />} />
-        <Route path="/host" element={<HostLayout />}>
+        <Route path="host" element={<HostLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="income" element={<Income />} />
           <Route path="list" element={<List />} />

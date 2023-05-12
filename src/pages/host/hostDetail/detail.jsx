@@ -18,15 +18,12 @@ export default function HostVanDetail() {
         const result = await detail.json();
         setHostList(result.vans);
         setLoading(false);
-      } catch (e) {
+      } catch (error) {
         setHostList("Nothing found I ain't gon lie");
         setLoading(false);
       }
     };
     detailFetcher();
-    return () => {
-      detailFetcher();
-    };
   }, [listId]);
 
   return loading ? (
