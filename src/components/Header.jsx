@@ -44,7 +44,7 @@ const instanceRouter = createBrowserRouter(createRoutesFromElements(
       </Route>
 ))
 
-export default function Header() {
+export default function Main() {
   return (
     <RouterProvider router={instanceRouter}/>
   );

@@ -10,11 +10,8 @@ export async function loader({ request }) {
 function List() {
   const list = useLoaderData();
   console.log(list.prevPath);
-  const loading = false;
 
-  return loading ? (
-    <div className="text-center py-52">Loading...</div>
-  ) : (
+  return (
     <div className="bg-[#fff7ed] px-4 py-8 ">
       <h2 className="font-bold text-4xl">Your listed vans</h2>
       <div className="py-12 flex flex-col gap-4">

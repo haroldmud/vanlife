@@ -12,12 +12,8 @@ export default function HostVanDetail() {
   const hostList=useLoaderData();
   const listId = useParams();
   const item = hostList.vans[listId.id];
-  console.log(hostList)
-  const loading = false;
 
-  return loading ? (
-    <div className="text-center py-32">loading...</div>
-  ) : (
+  return (
     <div className=" bg-[#fff7ed] h-full border border-[transparent]">
       <Link to="/host/list" className="mb-4 flex gap-1 w-10/12 mx-auto">
         <span className="my-auto text-gray-500 text-sm">
