@@ -3,23 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './components/Header';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import vanSlice from './features/vanslice';
+import loginSlice from './features/loginSlice';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = configureStore({
   reducer:{
-    vans:vanSlice
+    vans:vanSlice,
+    login: loginSlice
   }
 })
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
         <Header />
-      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

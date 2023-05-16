@@ -1,16 +1,20 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetching } from "../features/vanslice";
-import { getVans } from "../api";
 import { useLocation, Link, useSearchParams } from "react-router-dom";
 import "../server";
+import { getVans } from "../api";
+import { useLoaderData } from "react-router-dom";
+
+
+export function loader(){
+  return getVans()
+}
 
 export default function Vans() {
+  const Vans = useLoaderData();
   const location = useLocation();
-  const [Vans, setVans] = useState([]);
-  const [loads, setLoads] = useState(true);
+  const loads=false;
   const vanLoad = useSelector((prev) => prev.vans.value.van);
   const vanDispatch = useDispatch();
   vanDispatch(fetching(Vans));
@@ -19,22 +23,6 @@ export default function Vans() {
   const vanFilter = searchFilter
     ? vanLoad.filter((char) => char.type.toLowerCase() === searchFilter)
     : vanLoad;
-
-  useEffect(() => {
-    const fetchVans = async () => {
-      try {
-        const vanData = await getVans();
-        setVans(vanData);
-        setLoads(false);
-      } catch (error) {
-        setLoads(false);
-      }
-    };
-    fetchVans();
-    return () => {
-      fetchVans();
-    };
-  }, []);
 
   return (
     <section>
